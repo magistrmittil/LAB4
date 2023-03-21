@@ -1,3 +1,4 @@
+name: Test Build
 on: [push]
 jobs:
     Test_gcc:
@@ -6,11 +7,7 @@ jobs:
         - name: test
         - run: sudo apt update -y
         - run: sudo apt install -y cmake
-        - run: cd hello_world_application
-	- run: cmake -H. -B_build
-	- run: cmake --build _build
-	- run: cmake --build _build --target hello_world
-	- run: ./_build/hello_world
+        - run: cd hello_world_application && cmake -H. -B_build && cmake --build _build && cmake --build _build --target hello_world && ./_build/hello_world
         - run: cd solver_application 
 	- run: cmake -H. -B_build
 	- run: cmake --build _build
