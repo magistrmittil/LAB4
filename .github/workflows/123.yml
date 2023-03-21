@@ -6,16 +6,15 @@ jobs:
         - name: test
         - run: sudo apt update -y
         - run: sudo apt install -y cmake
-        - run: cd hello_world_application && cmake . -B _build && cd _build && make
-        - run: cd solver_application && cmake . -B _build && cd _build && make
-        - run: echo "This job's status is ${{ job.status }}."
+        - run: cd hello_world_application
+	- run: cmake -H. -B_build
+	- run: cmake --build _build
+	- run: cmake --build _build --target hello_world
+	- run: ./_build/hello_world
+        - run: cd solver_application 
+	- run: cmake -H. -B_build
+	- run: cmake --build _build
+	- run: cmake --build _build --target solver_application
+	- run: ./_build/solver_aplication
 
-    Test_clang:
-        runs-on: ubuntu-latest
-        steps:
-            - name: test2
-            - run: sudo apt update -y
-            - run: sudo apt install -y clang cmake
-            - run: cd hello_world_application && cmake . -B _build -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang && cd _build && make
-            - run: cd solver_application && cmake . -B _build -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang && cd _build && make
-            - run: echo "This job's status is ${{ job.status }}."
+  
