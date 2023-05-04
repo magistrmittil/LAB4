@@ -79,3 +79,4 @@ cmake --build _build
 cmake --build _build --target solver
 ./_build/solver
 
+далее 4 лабораторная работа
